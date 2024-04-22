@@ -3,7 +3,7 @@ menu = """
 [d] Depositar
 [s] Sacar
 [e] Extrato
-[s] Fim/Sair
+[q] Fim/Sair
 
 => """
 
@@ -19,14 +19,14 @@ while True:
     opcao = input(menu)
 
     if opcao == "d":
-        valor = float(input("Informe o valor do depósito: "))
+        valor = float(input("Informe o valor do deposito: "))
 
         if valor > 0:
             saldo += valor
-            extrato += f"       Depósito: R$ {valor:.2f}\n"
+            extrato += f"       Deposito: R$ {valor:.2f}\n"
 
         else:
-            print("Operação falhou! O valor informado é inválido.")
+            print("Operacao falhou! O valor informado e invalido.")
 
     elif opcao == "s":
         valor = float(input("Informe o valor de saque: "))
@@ -36,13 +36,13 @@ while True:
         excedeuSaques = numeroSaques >= LIMITE_SAQUES
 
         if excedeuSaldo:
-            print("Operação falou! Você não tem saldo suficiente.")
+            print("Operacao falou! Voce nao tem saldo suficiente.")
 
         elif excedeuLimite:
-            print("Operação falou! O valor do saque excedeu o limite.")
+            print("Operacao falou! O valor do saque excedeu o limite.")
 
         elif excedeuSaques:
-            print("Operação falou! Número máximo de saques excedido.")
+            print("Operacao falou! Numero maximo de saques excedido [3 Saques Diarios].")
 
         elif valor > 0:
             saldo -= valor
@@ -50,16 +50,17 @@ while True:
             numeroSaques += 1
 
         else:
-            print("Operação falhou! O valor informado é inválido.")
+            print("Operacao falhou! O valor informado e invalido.")
 
     elif opcao == "e":
         print("\n=============EXTRATO===============")
-        print("Não foram realizadas movimentações." if not extrato else extrato)
+        print("Nao foram realizadas movimentacoes." if not extrato else extrato)
         print(f"\n       Saldo: R$ {saldo:.2f}")
+        print(f"\n       Quantidade de saques diarios: {numeroSaques}")
         print("*************************************")
 
-    elif opcao == "s":
+    elif opcao == "q":
         break
 
     else:
-        print("Operação inválida, por favor selecione corretamnete a opção desejada.")
+        print("Operacao invalida, por favor selecione corretamnete a opcao desejada.")
